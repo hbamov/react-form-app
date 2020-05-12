@@ -8,7 +8,7 @@ class ActiveForms extends React.Component {
               value.visibility ?
                   <Tab
                       eventKey={key}
-                      title={key}
+                      title={value.label}
                       key={key}
                   > </Tab> :
                   ''
@@ -23,7 +23,6 @@ class ActiveForms extends React.Component {
                 {
                     tabs
                 }
-
             </Tabs>
         )
     }

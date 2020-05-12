@@ -1,7 +1,7 @@
 import React from "react";
-import Navigation from "./Navigation";
-import ActiveForms from "./ActiveForms";
-import FormsContainer from "./FormsContainer"
+import Navigation from "./layout/Navigation";
+import ActiveForms from "./layout/ActiveForms";
+import FormsContainer from "./layout/FormsContainer"
 
 // import update from 'react-addons-update';
 
@@ -11,6 +11,7 @@ class AppContainer extends React.Component {
         this.state = {
             forms: {
                 login: {
+                    label: "form1",
                     fields: {
                        email: "",
                        password: "",
@@ -19,6 +20,7 @@ class AppContainer extends React.Component {
                     visibility: false
                 },
                 address: {
+                    label: "form2",
                     fields: {
                         address1: "",
                         address2: "",
@@ -29,13 +31,14 @@ class AppContainer extends React.Component {
                     visibility: false
                 },
                 profile: {
+                    label: "form3",
                     fields: {
                         firstName: "",
                         lastName: "",
                         gender: ""
                     },
                     visibility: false
-                },
+                }
             },
             activeTab: ""
         }
@@ -46,7 +49,8 @@ class AppContainer extends React.Component {
 
         this.setState(prevState => {
             let forms = Object.assign({}, prevState.forms);
-            console.log(name)
+
+            //resetting form
             switch(name) {
                 case 'login':
                     forms[name].fields.email = "";
@@ -69,13 +73,12 @@ class AppContainer extends React.Component {
                     return
             }
             forms[name].visibility = true;
-            console.log(forms)
+
             return {forms, activeTab: name}
         })
     }
 
     switchTab = (tabIndex) => {
-        console.log(tabIndex)
         this.setState({
             activeTab: tabIndex
         })
@@ -85,7 +88,6 @@ class AppContainer extends React.Component {
         const { name, value, type, checked } = event.target;
 
         const formName = event.target.getAttribute('data-form')
-        console.log(formName, checked)
 
         type === "checkbox" ?
             this.setState(prevState => {
@@ -104,7 +106,7 @@ class AppContainer extends React.Component {
     render() {
         return (
             <main>
-                <Navigation handleButtonClick={this.handleButtonClick} buttons={this.state.forms}/>
+                <Navigation className="bg-info" handleButtonClick={this.handleButtonClick} buttons={this.state.forms}/>
                 <ActiveForms data={this.state} switchTab={this.switchTab}/>
                 {
                     this.state.activeTab !== '' ?
