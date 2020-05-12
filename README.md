@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+App made by me to exercise react forms and state management.
 
 ## Installation
 
