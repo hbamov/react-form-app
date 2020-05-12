@@ -1,4 +1,4 @@
-App made by me to exercise react forms and state management.
+App made by me to exercise ReactJS forms and state management.
 
 ## Installation
 
